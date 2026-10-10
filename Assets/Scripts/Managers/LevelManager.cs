@@ -3,8 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public void LoadScene(int sceneIndex)
+    private void Start()
     {
-        SceneManager.LoadScene(sceneIndex);
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        }
+    }
+
+    public void OpenScene(int sceneIndex)
+    {
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 }
